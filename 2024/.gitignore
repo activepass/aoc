@@ -1,3 +1,5 @@
 *.exe
 *.pdb
 *.aoc
+input
+test
