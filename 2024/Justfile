@@ -1,0 +1,11 @@
+set shell := ["fish", "-c"]
+
+run day: (check_day day)
+  cd {{day}} && odin run . -out:{{day}}.aoc
+
+time day o='false': (check_day day)
+  cd {{day}} && odin build . -out:{{day}}.aoc {{ if o != "false" { "-o:aggressive -no-bounds-check" } else {""} }}
+  time {{day}}/{{day}}.aoc
+
+check_day day: 
+	{{if path_exists(day) == "true" {""} else {error("Day does not exist")} }}
