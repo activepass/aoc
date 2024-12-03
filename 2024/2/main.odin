@@ -29,6 +29,8 @@ main :: proc() {
     }
 
     fmt.println(safe_reports, dampened_safe_reports, dampened_safe_reports+safe_reports)
+    assert(safe_reports == 572)
+    assert(dampened_safe_reports == 572 + 40)
 }
 
 safe :: proc(levels: []int) -> bool {

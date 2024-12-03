@@ -14,6 +14,8 @@ main :: proc() {
 	p1, p2 := consolidated()
 	fmt.printfln("part1 -> %d", p1)
 	fmt.printfln("part2 -> %d", p2)
+    assert(p1 == 2057374)
+    assert(p2 == 23177084)
 }
 
 part1 :: proc() -> int {
