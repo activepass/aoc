@@ -20,7 +20,7 @@ part1 :: proc(data: string) -> int {
     i := 0
     sum := 0
     enabled := true
-    re, e := regex.create(`mul\(([0-9]*),([0-9]*)\)`, {.Global})
+    re, e := regex.create(`mul\(([0-9]+),([0-9]+)\)`, {.Global})
     if e != nil do panic("regex err")
 
     for {
@@ -41,7 +41,7 @@ part2 :: proc(data: string) -> int {
     sum := 0
     enabled := true
 
-    re, e := regex.create(`mul\(([0-9]*),([0-9]*)\)|do\(\)|don't\(\)`, {.Global})
+    re, e := regex.create(`mul\(([0-9]+),([0-9]+)\)|do\(\)|don't\(\)`, {.Global})
     if e != nil do panic("regex err")
 
     for {
