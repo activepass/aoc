@@ -3,8 +3,7 @@ run day: (check_day day)
   cd {{day}} && odin run . -out:{{day}}.aoc
 
 time day o='false': (check_day day)
-  set shell := ["fish", "-c"]
-  cd {{day}} && odin build . -out:{{day}}.aoc {{ if o != "false" { "-o:aggressive -no-bounds-check" } else {""} }}
+  cd {{day}} && odin build . -out:{{day}}.aoc {{ if o != "false" { "-o:aggressive -no-bounds-check -disable-asserts" } else {""} }}
   time {{day}}/{{day}}.aoc
 
 check_day day: 
