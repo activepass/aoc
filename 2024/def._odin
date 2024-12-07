@@ -1,0 +1,14 @@
+package main
+
+import "core:fmt"
+import "core:slice"
+import "core:strings"
+import "core:strconv"
+
+main :: proc() {
+    data := #load("test", string)
+}
+
+part1 :: proc() {}
+
+part2 :: proc() {}

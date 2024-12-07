@@ -1,11 +1,18 @@
-set shell := ["fish", "-c"]
 
 run day: (check_day day)
   cd {{day}} && odin run . -out:{{day}}.aoc
 
 time day o='false': (check_day day)
+  set shell := ["fish", "-c"]
   cd {{day}} && odin build . -out:{{day}}.aoc {{ if o != "false" { "-o:aggressive -no-bounds-check" } else {""} }}
   time {{day}}/{{day}}.aoc
 
 check_day day: 
 	{{if path_exists(day) == "true" {""} else {error("Day does not exist")} }}
+
+new day:
+    {{if path_exists(day) == "true" {error("Day already exists")} else {""} }}
+    mkdir {{day}}
+    touch {{day}}/input
+    touch {{day}}/test
+    cp def._odin {{day}}/main.odin
