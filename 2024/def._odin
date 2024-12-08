@@ -6,7 +6,7 @@ import "core:strings"
 import "core:strconv"
 
 main :: proc() {
-    data := #load("test", string)
+	data := #load("test", string)
 }
 
 part1 :: proc() {}
