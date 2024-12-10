@@ -2,8 +2,8 @@ package main
 
 import "core:fmt"
 import "core:slice"
-import "core:strings"
 import "core:strconv"
+import "core:strings"
 
 GRID_SIZE :: 50
 Position :: [2]int
@@ -22,17 +22,17 @@ main :: proc() {
 	assert(p2 == 1280)
 }
 
-draw_antinodes :: proc(an: map[Position]struct{}) {
-	for y in 0..<GRID_SIZE {
-		line : [GRID_SIZE]rune
-		for x in 0..<GRID_SIZE {
+draw_antinodes :: proc(an: map[Position]struct {}) {
+	for y in 0 ..< GRID_SIZE {
+		line: [GRID_SIZE]rune
+		for x in 0 ..< GRID_SIZE {
 			p := Position{x, y}
 			if p in an {
 				line[x] = '#'
 			} else {
 				line[x] = '.'
 			}
-			
+
 		}
 		fmt.printfln("%s", line)
 	}
@@ -41,15 +41,15 @@ draw_antinodes :: proc(an: map[Position]struct{}) {
 
 part1 :: proc(s: string) -> int {
 	s := s
-	antinodes : map[Position]struct{}
+	antinodes: map[Position]struct {}
 
-	grid : map[rune][dynamic]Position
+	grid: map[rune][dynamic]Position
 	y := 0
 	for l in strings.split_lines_iterator(&s) {
 		defer y += 1
 		for c, x in l {
 			if c == '.' do continue
-			pos : Position = {x, y}
+			pos: Position = {x, y}
 			if c in grid {
 				for res_node in grid[c] {
 					diff := pos - res_node
@@ -65,23 +65,22 @@ part1 :: proc(s: string) -> int {
 			}
 		}
 	}
-	
+
 	return len(antinodes)
 }
 
 
-
-part2 :: proc(s: string) -> int{
+part2 :: proc(s: string) -> int {
 	s := s
-	antinodes : map[Position]struct{}
+	antinodes: map[Position]struct {}
 
-	grid : map[rune][dynamic]Position
+	grid: map[rune][dynamic]Position
 	y := 0
 	for l in strings.split_lines_iterator(&s) {
 		defer y += 1
 		for c, x in l {
 			if c == '.' do continue
-			pos : Position = {x, y}
+			pos: Position = {x, y}
 			if c in grid {
 				antinodes[pos] = {}
 				for res_node in grid[c] {
@@ -106,7 +105,6 @@ part2 :: proc(s: string) -> int{
 		}
 	}
 
-	
 
 	return len(antinodes)
 }
